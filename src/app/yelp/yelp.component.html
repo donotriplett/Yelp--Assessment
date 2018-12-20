@@ -1,0 +1,23 @@
+<h1>Yelp! API</h1>
+<form [formGroup]="yelp" (ngSubmit)="submit(yelp)">
+  <label>Select a Price Range: </label>
+  <select formControlName="price" required>
+    <option *ngFor="let p of price" value="{{ p.value }}">{{ p.view }}</option>
+  </select>
+  <label>Enter City: </label>
+  <input formControlName="city" required>
+  <label>Enter State: </label>
+  <input formControlName="state" required>
+  <button type="submit">Submit</button>
+</form>
+
+<div>
+  <div *ngIf="result !== undefined">
+    <img [src]="result?.image_url">
+    <h1>{{ result.name }}</h1>
+    <h4>{{ result.location.display_address }} </h4>
+    <p>{{ result.display_phone }}</p>
+    <p>{{ delivers }}</p>
+    <p>{{ rating }}</p>
+  </div>
+</div>
